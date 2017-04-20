@@ -580,17 +580,17 @@ my $usage=<<USAGE;
       Usage : $0 <Config File> <Link_A>
       Config file should contain the following properties with values ##>>>>>>>what kind of file is this config file, what is the content is it json or the same as mentioned here?
 
-usergroup="";
+usergrp="";
 skey="";
-checkid="";
+DBid="";
 nt_id="";
 team="";
 feedurl="";
 usr="";
 pwd="";
 category="";
-process="";
-priority="";
+dev="";
+prio="";
 USAGE
       print "$usage\n";
       exit ;
