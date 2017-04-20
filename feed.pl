@@ -11,14 +11,14 @@ my $curl="/usr/bin/curl";
 
 $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME}=0;
 
-my $feed_config = shift or die &usage; ##>> what is this part doing ?
+my $test = shift or die &usage; ##>> what is this part doing ?
 my $Link_A = shift or die &usage;
 #Split the command parameter into Link_A and SKEY ##>> if link_A is a file what it should include and in which content format?
 my ($Link_A,$skey,$priority)= split(',',$Link_A);
 
-if ( ! -f $feed_config )
+if ( ! -f $test )
    {
-      print "\n'$feed_config' is not a file \n";
+      print "\n'$test' is not a file \n";
       &usage; ##>> what is this part doing?
    }
 
@@ -45,13 +45,13 @@ my $action;
 #$ENV{BUILD_URL}="https://localhost:8080/jenkins/job/agent/1/console";
 
 
-#read feed_config
-my $feed_config_ref=&readopeninc($feed_config); #>>what is this part doing ? are values defined in feed_config for feed_config_ref ?
-my %feed_values=%$feed_config_ref;
+#read test
+my $test_ref=&readopeninc($test); #>>what is this part doing ? are values defined in test.ini ?
+my %feed_values=%test_ref;
 
-my $juser=$feed_values{'j.user'}; #> is this value defined in feed_config?
-my $japi=$feed_values{'j.api'};
-my $curlopts="-k -u $juser:$japi" if ($japi && $juser);
+my $puser=$feed_values{'j.user'}; #> is this value defined in feed_config?
+my $papi=$feed_values{'p.api'};
+my $curlopts="-k -u $puser:$papi" if ($papi && $puser);
 
 my $job_url="$ENV{JOB_URL}";
 my $job_name="$ENV{JOB_NAME}";
